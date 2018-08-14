@@ -32,7 +32,7 @@ iptables -t nat -A POSTROUTING -s 10.8.0.0/16 -o eth0 -j MASQUERADE
 
 # hotfix for https://github.com/gaomd/docker-ikev2-vpn-server/issues/7
 rm -f /var/run/starter.charon.pid
-echo ": PSK \"$VPN_PSK\"" >/etc/strongswan/ipsec.secrets
-echo "$VPN_USER : XAUTH \"$VPN_PASS\"" >>/etc/strongswan/ipsec.secrets
+echo ": PSK \"$VPN_PSK\"" >/etc/ipsec.secrets
+echo "$VPN_USER : XAUTH \"$VPN_PASS\"" >>/etc/ipsec.secrets
 # http://wiki.loopop.net/doku.php?id=server:vpn:strongswanonopenvz
 /usr/sbin/ipsec start --nofork --debug
