@@ -25,8 +25,7 @@
 # https://wiki.strongswan.org/projects/strongswan/wiki/ForwardingAndSplitTunneling
 # Continue reading: https://wiki.strongswan.org/projects/strongswan/wiki/VirtualIP
 sysctl net.ipv4.ip_forward=1
-iptables -t nat -A POSTROUTING -s 10.8.0.0/16 -o eth0 -m policy --dir out --pol ipsec -j ACCEPT
-iptables -t nat -A POSTROUTING -s 10.8.0.0/16 -o eth0 -j MASQUERADE
+iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o eth0 -j MASQUERADE
 
 # hotfix for openssl `unable to write 'random state'` stderr
 
@@ -35,4 +34,4 @@ rm -f /var/run/starter.charon.pid
 echo ": PSK \"$VPN_PSK\"" >/etc/ipsec.secrets
 echo "$VPN_USER : XAUTH \"$VPN_PASS\"" >>/etc/ipsec.secrets
 # http://wiki.loopop.net/doku.php?id=server:vpn:strongswanonopenvz
-/usr/sbin/ipsec start --nofork --debug
+ipsec start --nofork --debug
