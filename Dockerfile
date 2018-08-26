@@ -3,7 +3,7 @@ FROM ubuntu
 RUN apt update && apt -y install strongswan iptables
 
 
-COPY ipsec.conf ipsec.secrets strongswan.conf /etc/
+COPY ipsec.conf ipsec.secrets /etc/
 COPY start.sh /
 
 ENV VPN_USER vpn
