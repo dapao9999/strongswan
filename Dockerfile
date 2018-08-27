@@ -1,6 +1,6 @@
 FROM ubuntu
 
-RUN apt update && apt -y install strongswan iptables
+RUN apt update && apt -y install strongswan iptables kmod
 
 
 COPY ipsec.conf ipsec.secrets /etc/
