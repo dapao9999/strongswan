@@ -1,14 +1,10 @@
-FROM ubuntu
 
-RUN apt update && apt -y install strongswan iptables kmod
+FROM alpine
 
+RUN apk add --no-cache curl strongswan
 
 COPY ipsec.conf ipsec.secrets /etc/
 COPY start.sh /
-
-ENV VPN_USER vpn
-ENV VPN_PASS vpn
-ENV VPN_PSK vpn
 
 EXPOSE 500/udp 4500/udp
 
