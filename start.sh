@@ -6,5 +6,5 @@ rm -f /var/run/starter.charon.pid
 echo ": PSK ${PSK:-vpn}" >/etc/ipsec.secrets
 echo "${USER:-vpn} : XAUTH ${PASS:-vpn}" >>/etc/ipsec.secrets
 
-ipsec start --nofork
+ipsec start --nofork 
 
