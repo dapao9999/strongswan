@@ -1,6 +1,6 @@
 FROM alpine:edge
 
-RUN apk add --no-cache curl strongswan
+RUN apk add -u --no-cache curl strongswan musl
 
 COPY ipsec.conf ipsec.secrets /etc/
 COPY start.sh /
