@@ -4,6 +4,5 @@ iptables -t nat -A POSTROUTING -j MASQUERADE
 rm -f /var/run/starter.charon.pid
 
 echo ": PSK ${PSK:-vpn}" >/etc/ipsec.secrets
-echo "${USER:-vpn} : XAUTH ${PASSWORD:-vpn}">>/etc/ipsec.secrets
 
 ipsec start --nofork 
